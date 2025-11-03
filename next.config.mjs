@@ -1,17 +1,18 @@
-import withPWA from "next-pwa";
+import withPWAInit from "@ducanh2912/next-pwa";
 
-const pwaConfig = withPWA({
-  dest: 'public',
+const withPWA = withPWAInit({
+  dest: "public",
+  disable: process.env.NODE_ENV === "development",
   register: true,
   skipWaiting: true,
-  disable: process.env.NODE_ENV === "development",
 });
 
-const nextConfig = pwaConfig({
+const nextConfig = withPWA({
   reactStrictMode: true,
   typescript: {
-    ignoreBuildErrors: true, // Temporal para deployar
+    ignoreBuildErrors: false,
   },
+  turbopack: {}, // Ahora funciona con Turbopack
 });
 
 export default nextConfig;
