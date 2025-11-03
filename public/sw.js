@@ -91,10 +91,10 @@ define(['./workbox-e43f5367'], (function (workbox) { 'use strict';
         return response;
       }
     }]
-  }), 'GET');
-  workbox.registerRoute(/.*/i, new workbox.NetworkOnly({
-    "cacheName": "dev",
+}), 'GET');
+  workbox.registerRoute(/.*/i, new workbox.CacheFirst({
+    "cacheName": "offline-assets", // Puedes usar un nombre más descriptivo
     plugins: []
-  }), 'GET');
+}), 'GET');
 
 }));
